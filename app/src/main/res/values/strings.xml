@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Lubuma_Blaise_S2219962</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Currencies" />
+    <string name="Conversion" />
+    <string name="submitRequest" />
 </resources>
