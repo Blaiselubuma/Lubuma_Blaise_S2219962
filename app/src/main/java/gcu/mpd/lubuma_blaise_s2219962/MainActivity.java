@@ -41,48 +41,75 @@ import java.util.Arrays;
 import java.util.LinkedList;
 
 public class MainActivity<Myadapter> extends AppCompatActivity implements OnClickListener, Serializable {
-    private Button startButton;
-    private Button convertButton;
     private Fragment_1 fragment1;
     private Fragment_2 fragment2;
+    private Fragment_3 fragment3;
+    private Button ok;
     private String result;
     private String url1 = "";
     private String urlSource = "https://www.fx-exchange.com/gbp/rss.xml";
     private ListView listView;
     private static volatile ArrayList mItemsList = null;
     private View mainView;
+    private RadioGroup rdGroupCurrency;
+    private RadioButton rdList;
+    private RadioButton rdSearch;
+    private RadioButton rdSummary;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        startButton = (Button) findViewById(R.id.startButton);
-        startButton.setOnClickListener(this);
-        convertButton = (Button) findViewById(R.id.conversionButton);
-        convertButton.setOnClickListener(this);
+
+        ok = (Button) findViewById(R.id.button_Ok);
+        ok.setOnClickListener(this);
         mainView = (View) findViewById(R.id.mainView);
         mainView.setBackgroundColor(R.drawable.poundimage);
+        rdGroupCurrency = (RadioGroup) findViewById(R.id.rdGroupMain);
+        rdList = (RadioButton) findViewById(R.id.rdList);
+        rdSearch = (RadioButton) findViewById(R.id.rdSearch);
+        rdSummary = (RadioButton) findViewById(R.id.rdSummary);
+        rdList.setOnClickListener(this);
+        rdSearch.setOnClickListener(this);
+        rdSummary.setOnClickListener(this);
+        rdGroupCurrency.setEnabled(true);
+        rdList.toggle();
     }
 
     @Override
     public void onClick(View aview) {
 
-        if (aview == startButton) {
+        if (aview == ok) {
+            if (rdList.isChecked()) {
                 startProgress();
-        } else if (aview == convertButton) {
-            listView.setAdapter(null);
-            fragment1 = new Fragment_1();
-            fragment2 = new Fragment_2();
+            } else if (rdSearch.isChecked()) {
+                listView.setAdapter(null);
+                fragment1 = new Fragment_1();
+                fragment2 = new Fragment_2();
 
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("bundle_key", mItemsList);
-            fragment1.setArguments(bundle);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("bundle_key", mItemsList);
+                fragment1.setArguments(bundle);
 
-            FragmentManager manager1 = getSupportFragmentManager();
-            FragmentTransaction transaction1 = manager1.beginTransaction();
-            transaction1.replace(R.id.fragmentFr1, fragment1);
-            transaction1.commit();
+                FragmentManager manager1 = getSupportFragmentManager();
+                FragmentTransaction transaction1 = manager1.beginTransaction();
+                transaction1.replace(R.id.fragmentFr1, fragment1);
+                transaction1.commit();
+            } else if (rdSummary.isChecked()) {
+                listView.setAdapter(null);
+                fragment3 = new Fragment_3();
+
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("bundle_key", mItemsList);
+                fragment3.setArguments(bundle);
+
+                FragmentManager manager3 = getSupportFragmentManager();
+                FragmentTransaction transaction3 = manager3.beginTransaction();
+                transaction3.replace(R.id.fragmentFr3, fragment3);
+                transaction3.commit();
+            }
         }
     }
     public void startProgress() {
@@ -135,10 +162,6 @@ public class MainActivity<Myadapter> extends AppCompatActivity implements OnClic
                         Log.e("MyTag", "ioexception");
 
                     }
-
-
-
-
             myCurrencyRate item = null;
             LinkedList<myCurrencyRate> alist = new LinkedList<>();
 
