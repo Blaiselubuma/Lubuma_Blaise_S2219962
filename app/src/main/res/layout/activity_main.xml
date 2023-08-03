@@ -72,6 +72,14 @@ Programme of Study : COMPUTING YEAR 3
             android:layout_gravity="center"
             android:background="@drawable/border"
             android:text="OK" />
+        <TextView
+            android:id="@+id/mDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Select currency and convert"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
 
         <FrameLayout
             android:id="@+id/fragmentFr1"

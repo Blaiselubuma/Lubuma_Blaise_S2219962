@@ -8,12 +8,8 @@ package gcu.mpd.lubuma_blaise_s2219962;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
 import android.graphics.Color;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.SpannableStringBuilder;
-import android.text.style.ImageSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;

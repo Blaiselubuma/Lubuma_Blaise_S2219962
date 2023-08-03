@@ -26,7 +26,7 @@ Programme of Study : COMPUTING YEAR 3
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="1pt"
-        android:text="TextView"
+
 
         android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
 </LinearLayout>
