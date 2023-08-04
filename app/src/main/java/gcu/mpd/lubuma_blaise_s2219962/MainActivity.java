@@ -340,9 +340,6 @@ public class MainActivity<Myadapter> extends AppCompatActivity implements OnClic
                         val++;
                     }
 
-
-
-
                     /************Selecting item in the listview and send its value to a fragment*************/
                     listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
