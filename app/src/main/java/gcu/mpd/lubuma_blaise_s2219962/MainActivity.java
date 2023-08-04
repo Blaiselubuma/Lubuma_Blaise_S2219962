@@ -96,15 +96,16 @@ public class MainActivity<Myadapter> extends AppCompatActivity implements OnClic
 
         if (aview == ok) {
             if (rdList.isChecked()) {
+                /********************Checking the Internet connectivity to get access to the rss feed*****************/
                 ConnectivityManager myConnexion = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
                 NetworkInfo activeNetwork = myConnexion.getActiveNetworkInfo();
                 boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+                /*****************************************************************************************************/
                 if (isConnected) {
-                    // do something
                     startProgress();
                 } else {
-                    //Toast.makeText(getApplicationContext(),"This app cannot run, please check your Internet Connexion",Toast.LENGTH_SHORT).show();
-                    Log.e("Connexion", "Check your Internet connexion");
+                    Toast.makeText(getApplicationContext(),"This app cannot run, please check your Internet Connexion",Toast.LENGTH_SHORT).show();
+                    //Log.e("Connexion", "Check your Internet connexion");
                     finish();
                     System.exit(0);
                 }
@@ -317,24 +318,7 @@ public class MainActivity<Myadapter> extends AppCompatActivity implements OnClic
                                     if(array[i].contains(mCurr))
                                         aPosition = i;
                                 //listView.getItemAtPosition(aPosition);
-
                                 //listView.getChildAt(aPosition).setBackgroundColor(getResources().getColor(R.color.teal_200));
-                                //String test = String.valueOf(listView.getItemAtPosition(aPosition));
-                                Log.e("test", String.valueOf(alist.size()));
-                                //listView.getChildAt(aPosition).setBackgroundColor(Color.MAGENTA);
-                                //listView.setBackgroundColor(Color.GREEN);
-                                //position = alist.indexOf(mCurr);
-                                //listView.getItemAtPosition(aPosition);
-                                listView.getFocusables(aPosition);
-
-                                //listView.setSelection(aPosition);
-                                //listView.setSelected(true);
-                                //listView.getChildAt(aPosition).setBackgroundColor(Color.MAGENTA);
-                                //listView.setBackgroundColor(Color.GREEN);
-                                //listView.setSelector(android.R.color.holo_green_light);
-                                Log.e("High rate", mRate + " " + mCurr + " " + aPosition);
-                                //Log.e("current item",mCurrentItem);
-                                //listView.getChildAt(test).setBackgroundColor(getResources().getColor(R.color.teal_200));
                             }
                         }
                         val++;
@@ -365,10 +349,6 @@ public class MainActivity<Myadapter> extends AppCompatActivity implements OnClic
                         }
                     });
                     /******************************************************************************************/
-
-
-
-
                 }
             });
         }
