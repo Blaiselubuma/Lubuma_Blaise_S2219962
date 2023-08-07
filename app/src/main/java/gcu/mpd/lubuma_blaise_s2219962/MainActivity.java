@@ -302,6 +302,8 @@ public class MainActivity<Myadapter> extends AppCompatActivity implements OnClic
                     listView = (ListView) findViewById(R.id.listView);
                     myAdapter myadapter = new myAdapter(MainActivity.this, array, countryFlags);
                     listView.setAdapter(myadapter);
+
+                    /****************Retrieve the "strength" of a currency vs GBP***********/
                     String mCurr = null;
                     String mNameCurr = null;
                     int position = 0;
@@ -323,6 +325,7 @@ public class MainActivity<Myadapter> extends AppCompatActivity implements OnClic
                         }
                         val++;
                     }
+                    /*****************************************************************************/
 
                     /************Selecting item in the listview and send its value to a fragment*************/
                     listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
